@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      button {
+        font-family: sans-serif;
+        background: linear-gradient(to bottom, #FF5151, #FF0000);
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        color: white;
+        cursor: pointer;
+        margin: 20px;
+      }
+      .trail {
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-image: url("C:\Users\Craig Fernandes\Downloads\Screenshot 2023-02-05 060109.png");
+        background-color: rgb(156, 80, 13);
+        animation: trail 1s ease-in-out infinite;
+      }
+      @keyframes trail {
+        0% {
+          transform: scale(0);
+        }
+        20% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0);
+        }
+      }
+    </style>
+  </head>
+  <body onmousemove="createTrail(event)">
+    <button>Button 1</button>
+    <button>Button 2</button>
+
+    <script>
+      function createTrail(e) {
+        let trail = document.createElement("div");
+        trail.classList.add("trail");
+        trail.style.left = e.clientX + "px";
+        trail.style.top = e.clientY + "px";
+        document.body.appendChild(trail);
+        setTimeout(() => {
+          trail.remove();
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
